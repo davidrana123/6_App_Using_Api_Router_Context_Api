@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router-dom"
+import About from './About';
+import Contact from './Contact';
+import Error from './Error';
+import Menu from "./Menu";
 
-function App() {
+const App = () => {
+  const Name = () => {
+    return <h1>this is a name page</h1>
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Menu />
+    <Switch>     {/*9 - stap */}
+       <Route exact path="/"  component={About}/>  {/* 7 - stap set switch - route - path - component  10 - stap 10 exact path set krne ke liye /* */}
+       <Route exact path="/contact"  component={Contact}/>    {/* 8 - stap */}
+       <Route path="/contact/name"  component={Name}/>
+       <Route component={Error} />
+    </Switch>
+    {/* <About />
+    <Contact /> */}
+    </>
+  )
 }
 
 export default App;

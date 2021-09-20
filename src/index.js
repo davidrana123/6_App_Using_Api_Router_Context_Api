@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";  // 1 - stap 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    {<App />          /* // 2 - stap 2 aab sab ko BrowserRouter ke andr hi likha hai */}
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
