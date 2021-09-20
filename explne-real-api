@@ -1,0 +1,54 @@
+real api -- 
+
+free api data link 
+-- https://reqres.in/api/users
+
+knowage - 
+--- make constructor and make a satte
+-- call api with fetch function 
+-- use map function for make listing of data
+
+1 - class create kiya 
+2 -render and return kiya 
+3 - constracter set kiya , super , and state careat kiya 
+4 - state ke and value set kiya 
+5 - componentDidmount set kiya eske andr hi api call krni cahiye
+6 - fetch function likha ... eske ande phla perameter {url} 
+7 - ye aaik promish return krna hai esliye {then} use krte hai 
+simple way to fetch api -- 
+----------------------------------------------------------------------
+import React from "react";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      users: null
+    }
+  }
+  componentDidMount() {
+    fetch('https://reqres.in/api/users').then((resp) => {
+      resp.json().then((result) => {
+        -- console.warn(result)
+        this.setState({users:result.data})
+      })
+    })
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1>
+          Fetch API Data David
+        </h1>
+      </div>
+    );
+  }
+}
+export default App;
+------------------------------------------------------------------------------
+
+8 - using map method
+9 - map function apne aap me peramert accepct krta hai 
+10 - fetch me setStutes set kiya 
+
+this is tha simple way to fetch data 

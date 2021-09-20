@@ -1,28 +1,36 @@
-import { Route, Switch } from "react-router-dom"
-import About from './About';
-import Contact from './Contact';
-import Error from './Error';
-import Menu from "./Menu";
+import React from "react";
 
-const App = () => {
-  const Name = () => {
-    return <h1>this is a name page</h1>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      users: null
+    }
   }
-
-
-  return (
-    <>
-    <Menu />
-    <Switch>     {/*9 - stap */}
-       <Route exact path="/"  component={About}/>  {/* 7 - stap set switch - route - path - component  10 - stap 10 exact path set krne ke liye /* */}
-       <Route exact path="/contact"  component={Contact}/>    {/* 8 - stap */}
-       <Route path="/contact/name"  component={Name}/>
-       <Route component={Error} />
-    </Switch>
-    {/* <About />
-    <Contact /> */}
-    </>
-  )
+  componentDidMount() {
+    fetch('https://reqres.in/api/users').then((resp) => {
+      resp.json().then((result) => {
+        // console.warn(result)
+        this.setState({users:result.data})
+      })
+    })
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1>
+          Fetch API Data David
+        </h1>
+        {
+          this.state.users ? 
+          this.state.users.map((item,i)=> 
+          <div><p>{i}---{item.first_name}{item.last_name} </p></div> 
+          )
+          :
+          null
+        }
+      </div>
+    );
+  }
 }
-
 export default App;
